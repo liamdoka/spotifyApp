@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css')}}">
+        <title>HERE WE GO BOIYSS</title>
+    </head>
+    <body onload="updateSlider()">
+        <div class="container">
+            <div class="header">
+                <span class="welcome">G'Day {{username}}</span>
+            </div>
+            <div class="content">
+                <div class="text">
+                    <div>
+                        <h3>Your Top 5 Genres:</h3>
+                        {% for name in genres[0] %}
+                            <a class="button" href="http://everynoise.com/engenremap-{{ name.replace(' ', '').replace('-', '') }}.html" target="_blank">{{ name }}</a>
+                        {% endfor %}
+                    </div>
+                    <div class="sliderDiv">
+                        <h3>Your taste in levels of specificity</h3>
+                        <p>Tier <span id="demo"></span></p>
+                        <input type="range" id="slider" min="1" max="5" value="1" onchange="updateSlider()">
+                    </div>
+                    {% for id in range(0,6) %}
+                        <div id="tier{{id}}" class="genreDiv">
+                            {% if id > 0 %}
+                                {% for name in genres[id][:(id+1)*2] %}
+                                    <a class="button" href="http://everynoise.com/engenremap-{{ name.replace(' ', '').replace('-', '') }}.html" target="_blank">{{ name }}</a>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='script.js')}}"></script>
+    </body>
+</html>

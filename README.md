@@ -1,4 +1,4 @@
-# spotipy-application
+# spotifyApp
 Generate a tiered list of your Top Spotify Genres
 
 Watch how I made it: https://www.youtube.com/watch?v=r-h7VEu8_7Y
